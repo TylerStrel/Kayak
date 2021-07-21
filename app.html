@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
     <head>
-        <title>App Name: A Coding Project by Tyler Strel</title>
+        <title>Kayak: A Coding Project by Tyler Strel</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,7 +22,7 @@
         <!-- Nav Bar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="/img/TS_Mark.svg" class="d-inline-block align-text-top" alt="APP LOGO" height="24"> APP NAME</a>
+                <a class="navbar-brand" href="#"><img src="/img/TS_Mark.svg" class="d-inline-block align-text-top" alt="APP LOGO" height="24"> Kayak</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
                             <a class="nav-link" href="code.html">The Code</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                            <a class="nav-link" target="_blank" href="https://github.com/TylerStrel/Kayak">Git Repo</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" target="_blank" href="http://tylerstrel.com/">About</a>
@@ -51,8 +51,32 @@
         
         <!-- Main -->
         <main class="flex-shrink-0">
-            <div class="container">
-                
+            <div class="container mt-5">
+                <div class="row row-cols-1 row-cols-lg-2">
+                    <div class="col border-end border-2">
+                        <h1 class="display-5 fw-bold 1g-1 mb-3">Kayak : A Coding Project</h1>
+                        <h4 class="lead pb-3">Kayak is a palindrome. A palindrome is a word, phrase, or sequence that reads the same backward as forward.
+                        Write a program that checks if the phrase entered is a palindrome.</h4>
+                    </div>
+                    <div class="col">
+                        <h5 class="border-1 border-bottom border-danger">Enter a pharase or word to check.</h5>
+                        <form class="row gx-3 gy-2">
+                            <div class="col">
+                                <input id="userInput" type="text" class="form-control" placeholder="Enter a phrase or word" aria-label="Enter a phrase or word">
+                            </div>
+                            <div class="col-12">
+                                <button type="button" id="btnSubmit" class="btn btn-dark">Check</button>
+                            </div>
+                            <div class="alert alert-danger mt-5 invisible fade show" id="alert" role="alert">
+                                <h4 class="alert-heading" id="msgHead"></h4>
+                                <hr>
+                                <p class="mb-0" id="msg">
+                                    <!-- Insert a Message Here -->
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </main>
         
@@ -70,7 +94,7 @@
                     </div>
                     <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                         <div class="row">
-                            <div class="col social"><a href="#" target="https://www.linkedin.com/in/tyler-strel-932b5a183/"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                            <div class="col social"><a href="https://www.linkedin.com/in/tyler-strel-932b5a183/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
                             <div class="col social"><a href="https://github.com/TylerStrel" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
                             <div class="col social"><a href="https://twitter.com/Tyler_Strel" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                         </div>
@@ -88,6 +112,8 @@
         </script>
         <!-- Site.js -->
         <script src="/js/site.js"></script>
+        <script>
+            document.getElementById("btnSubmit").addEventListener("click", getUserInput);
+        </script>
     </body>
-
 </html>
