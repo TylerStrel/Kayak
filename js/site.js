@@ -9,19 +9,19 @@ function getUserInput(){
     // Check if string is valid
     if (validString(userInput)) {
 
-        if (isPalindrome(userInput)){
-
-            displayResults(true);
-        }
-        else{
-
-            displayResults(false);
-        }
+        let retunedPalindrome = isPalindrome(userInput);
+        displayMessage(retunedPalindrome);
     }
     else {
 
         // If the string has less than 2 characters then display an error
-        displayError();
+        let errorObj = {};
+        
+        errorObj.color = "alert-danger";
+        errorObj.header = "ERROR";
+        errorObj.message = `Error - You must enter a valid string of at least 2 characters.`;
+
+        displayMessage(errorObj);
     }
 }
 
@@ -40,7 +40,8 @@ function isPalindrome(userInput){
 
     let resultString = [];
     let palindromeString = configureString(userInput);
-    
+    let palondromeAlert = {};
+
     for (let index = palindromeString.length - 1; index >= 0; index--) {
         
         resultString += palindromeString[index];
@@ -48,12 +49,18 @@ function isPalindrome(userInput){
 
     if (resultString == palindromeString){
         
-        return true;
+        palondromeAlert.color = "alert-success";
+        palondromeAlert.header = "Success!";
+        palondromeAlert.message = `This IS a palindrome!`;
     }
     else{
 
-        return false;
+        palondromeAlert.color = "alert-danger";
+        palondromeAlert.header = "Fail!";
+        palondromeAlert.message = `This is NOT palindrome!`;
     }
+
+    return palondromeAlert;
 }
 
 function configureString(userInput){
@@ -80,30 +87,11 @@ function setAlertColor(alertClass){
 }
 
 
-function displayResults(success){
+function displayMessage(message){
 
-    if (success){
+    setAlertColor(`${message.color}`);
+    document.getElementById("msgHead").innerHTML = `${message.header}`;
+    document.getElementById("msg").innerHTML = `${message.message}`;
 
-        setAlertColor("alert-success");
-        document.getElementById("msgHead").innerHTML = `True!`;
-        document.getElementById("msg").innerHTML = `This is a palindrome!`;
-    }
-    else{
-
-        setAlertColor("alert-success");
-        document.getElementById("msgHead").innerHTML = `False!`;
-        document.getElementById("msg").innerHTML = `This NOT a palindrome!`;
-    }
-
-    document.getElementById("alert").classList.remove("invisible");
-}
-
-
-// Display error message 
-function displayError(){
-    
-    setAlertColor("alert-danger");
-    document.getElementById("msgHead").innerHTML = `Error!`;
-    document.getElementById("msg").innerHTML = `Error : You must enter a valid string of at least 2 characters.`;
     document.getElementById("alert").classList.remove("invisible");
 }
