@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
     <head>
-        <title>App Name: A Coding Project by Tyler Strel</title>
+        <title>Kayak: A Coding Project by Tyler Strel</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/TS_Mark.svg" class="d-inline-block align-text-top" alt="APP LOGO" height="24"> APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="/img/TS_Mark.svg" class="d-inline-block align-text-top" alt="APP LOGO" height="24"> Kayak</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/TylerStrel/Kayak">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="http://tylerstrel.com/">About</a>
@@ -57,22 +57,126 @@
     <!-- Main -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for Kayak.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            // Call Hello World
-                            function helloWorld() {
-                                alert("Hello World");
+                            function getUserInput(){
+
+                                // Make the alert box invisible if it is not already
+                                document.getElementById("alert").classList.add("invisible");
+                            
+                                // Get the string the user entered
+                                let userInput = document.getElementById("userInput").value;
+                            
+                                // Check if string is valid
+                                if (validString(userInput)) {
+                            
+                                    let retunedPalindrome = isPalindrome(userInput);
+                                    displayMessage(retunedPalindrome);
+                                }
+                                else {
+                            
+                                    // If the string has less than 2 characters then display an error
+                                    let errorObj = {};
+                                    
+                                    errorObj.color = "alert-danger";
+                                    errorObj.header = "ERROR";
+                                    errorObj.message = `Error - You must enter a valid string of at least 2 characters.`;
+                            
+                                    displayMessage(errorObj);
+                                }
+                            }
+                            
+                            function validString(userInput){
+                            
+                                if (userInput.trim().length > 1)
+                                {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                            
+                            function isPalindrome(userInput){
+                            
+                                let resultString = [];
+                                let palindromeString = configureString(userInput);
+                                let palondromeAlert = {};
+                            
+                                for (let index = palindromeString.length - 1; index >= 0; index--) {
+                                    
+                                    resultString += palindromeString[index];
+                                }
+                            
+                                if (resultString == palindromeString){
+                                    
+                                    palondromeAlert.color = "alert-success";
+                                    palondromeAlert.header = "Success!";
+                                    palondromeAlert.message = `This IS a palindrome!`;
+                                }
+                                else{
+                            
+                                    palondromeAlert.color = "alert-danger";
+                                    palondromeAlert.header = "Fail!";
+                                    palondromeAlert.message = `This is NOT palindrome!`;
+                                }
+                            
+                                return palondromeAlert;
+                            }
+                            
+                            function configureString(userInput){
+                            
+                                let palindromeString = userInput.replace(/[^a-zA-Z0-9]/g, '')
+                                .split(" ").join("")
+                                .toLowerCase();
+                            
+                                return palindromeString;
+                            }
+                            
+                            // Change color of the alert
+                            function setAlertColor(alertClass){
+                            
+                                switch (alertClass){
+                                    case "alert-success":
+                                        document.getElementById("alert").classList.remove("alert-danger");
+                                        document.getElementById("alert").classList.add("alert-success");
+                                        break;
+                                    case "alert-danger":
+                                        document.getElementById("alert").classList.remove("alert-success");
+                                        document.getElementById("alert").classList.add("alert-danger");
+                                }
+                            }
+
+                            function displayMessage(message){
+                            
+                                setAlertColor(`${message.color}`);
+                                document.getElementById("msgHead").innerHTML = `${message.header}`;
+                                document.getElementById("msg").innerHTML = `${message.message}`;
+                            
+                                document.getElementById("alert").classList.remove("invisible");
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structed in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with message of "Hello World".</p>
+                    <p>The Code is structed into multiple functions with error checking.</p>
+                    <h5>getUserInput()</h5>
+                    <p><strong>gerUserInput()</strong> is the main function. It retreives the user input and the calls the checking fuctions and then 
+                        either display the resluts or an error message.</p>
+                    <h5>validString()</h5>
+                    <p>This function checks to ensure the string is no just blank spaces and contatins more than 1 character.</p>
+                    <h5>isPalindrome()</h5>
+                    <p>This function takes the already checked user input. After configuring the string it reverses it and checks if it is in fact a palindrome. It
+                        using a for loop to reverse the string.</p>
+                    <h5>configureString()</h5>
+                    <p>This function removes all special characters and blank spaces from the given string.</p>
+                    <h5>setAlertColor()</h5>
+                    <p>Changes the class of the alert box from success to danger and vis versa. This changes the color to either green or red.</p>
+                    <h5>displayMessage()</h5>
+                    <p>Function takes in the alert message object and shows the user the end result.</p>
                 </div>
             </div>
         </div>
@@ -92,7 +196,7 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="https://www.linkedin.com/in/tyler-strel-932b5a183/"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://www.linkedin.com/in/tyler-strel-932b5a183/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
                         <div class="col social"><a href="https://github.com/TylerStrel" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
                         <div class="col social"><a href="https://twitter.com/Tyler_Strel" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>

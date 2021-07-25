@@ -86,7 +86,6 @@ function setAlertColor(alertClass){
     }
 }
 
-
 function displayMessage(message){
 
     setAlertColor(`${message.color}`);
