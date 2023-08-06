@@ -57,7 +57,7 @@ function isPalindrome(userInput){
 
         palondromeAlert.color = "alert-danger";
         palondromeAlert.header = "Fail!";
-        palondromeAlert.message = `This is NOT palindrome!`;
+        palondromeAlert.message = `This is NOT a palindrome!`;
     }
 
     return palondromeAlert;

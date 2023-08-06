@@ -1,12 +1,13 @@
 :root {
     --primary-color: #1d5888;
-    --secondary-color: #ff914d;
+    --secondary-color: #ff6b00;
     --dark-color: #292929;
     --white-color: #e7e7e7;
 }
 
 body {
     color: var(--dark-color);
+    overflow-x: hidden;
 }
 
 nav {
@@ -65,4 +66,8 @@ code [class*="language-"],
 
 main>.container {
     padding: 60px 15px 0;
+}
+
+.devicon{
+    font-size: 4rem;
 }
